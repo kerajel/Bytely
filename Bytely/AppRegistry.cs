@@ -1,4 +1,6 @@
-﻿using Bytely.Models.Settings;
+﻿using Bytely.Core.Interfaces;
+using Bytely.Core.Services;
+using Bytely.Models.Settings;
 using Microsoft.AspNetCore.HttpLogging;
 
 namespace Bytely.Web
@@ -15,6 +17,11 @@ namespace Bytely.Web
 
             builder.Services.Configure<UrlProviderSettings>(builder.Configuration.GetSection(nameof(UrlProviderSettings)));
             builder.Services.Configure<UserCookieSettings>(builder.Configuration.GetSection(nameof(UserCookieSettings)));
+
+            builder.Services.AddTransient<IUrlValidator, UrlValidator>();
+            builder.Services.AddTransient<IShortUrlConvertor, ShortUrlConverter>();
+            builder.Services.AddTransient<IDateTimeProvider, DateTimeProvider>();
+            builder.Services.AddTransient<ICookieProvider, CookieProvider>();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
