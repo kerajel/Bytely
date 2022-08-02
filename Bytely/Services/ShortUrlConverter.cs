@@ -18,11 +18,11 @@ namespace Bytely.Core.Services
             return string.Format(_settings.UrlTemplate!, _settings.UrlPort, urlId.ToString("X"));
         }
 
-        public bool TryConvertUriLocalPathToId(string url, out long urlId)
+        public bool TryConvertUriLocalPathToId(string uriLocalPath, out long urlId)
         {
             try
             {
-                urlId = Convert.ToInt64(url, 16);
+                urlId = Convert.ToInt64(uriLocalPath, 16);
                 return true;
             }
             catch

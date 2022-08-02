@@ -5,6 +5,6 @@ namespace Bytely.Models.Settings
     public class SequenceSettings
     {
         public string? SequenceCollectionName { get; set; }
-        public SequenceInfo[] Sequences { get; set; } = Array.Empty<SequenceInfo>();
+        public SequenceInfo[]? Sequences { get; set; }
     }
 }

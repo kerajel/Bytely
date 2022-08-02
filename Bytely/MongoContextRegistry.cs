@@ -37,7 +37,7 @@ namespace Bytely.Web
             if (!collections.Contains(sequenceCollectionName))
                 context.Database.CreateCollection(sequenceCollectionName);
 
-            foreach (var sequenceInfo in settings.Sequences)
+            foreach (var sequenceInfo in settings.Sequences!)
             {
                 var sequenceExists = context.Sequence
                     .Find(r => r.Name == sequenceInfo.TargetCollectionName)

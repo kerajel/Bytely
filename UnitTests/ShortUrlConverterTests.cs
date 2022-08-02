@@ -49,7 +49,7 @@ namespace UnitTests
             options.Value.Returns(new UrlProviderSettings() { UrlPort = 123, UrlTemplate = "https://localhost:{0}/{1}" });
             var sut = new ShortUrlConverter(options);
 
-            long id = 40127845;
+            var id = 40127845;
 
             // Act
             var result = sut.ConvertIdToShortUrl(id);

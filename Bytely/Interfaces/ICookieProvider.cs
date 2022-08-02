@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-namespace Bytely.Core.Interfaces
+﻿namespace Bytely.Core.Interfaces
 {
     public interface ICookieProvider
     {
