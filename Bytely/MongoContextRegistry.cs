@@ -31,12 +31,6 @@ namespace Bytely.Web
 
         private static void InitializeSequence(SequenceSettings settings, IMongoContext context)
         {
-            var collections = context.Database!.ListCollectionNames().ToList();
-            var sequenceCollectionName = context.Sequence!.CollectionNamespace.CollectionName;
-
-            if (!collections.Contains(sequenceCollectionName))
-                context.Database.CreateCollection(sequenceCollectionName);
-
             foreach (var sequenceInfo in settings.Sequences!)
             {
                 var sequenceExists = context.Sequence
@@ -50,7 +44,7 @@ namespace Bytely.Web
                         Name = sequenceInfo.TargetCollectionName,
                         Value = sequenceInfo.InitialId
                     };
-                    context.Sequence.InsertOne(sequenceEntry);
+                    context.Sequence!.InsertOne(sequenceEntry);
                 }
             }
         }
