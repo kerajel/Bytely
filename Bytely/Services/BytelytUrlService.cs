@@ -63,8 +63,8 @@ namespace Bytely.Core.Services
             var filter = Builders<BytelyUrl>.Filter.Eq(r => r.UrlId, urlId);
             var update = Builders<BytelyUrl>.Update.Inc(r => r.RedirectCount, 1);
 
-            var sequence = await _context.BytelyUrl.FindOneAndUpdateAsync(filter, update);
-            return sequence?.OriginUrl;
+            var bytelyUrl = await _context.BytelyUrl.FindOneAndUpdateAsync(filter, update);
+            return bytelyUrl?.OriginUrl;
         }
 
         private async Task<BytelyUrl> CreateBytelyUrl(string originUrl, string? userGuid = null)

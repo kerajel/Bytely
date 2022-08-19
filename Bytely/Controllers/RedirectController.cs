@@ -19,7 +19,7 @@ namespace Bytely.Controllers
         [HttpGet("{uriLocalPath}")]
         public async Task<IActionResult> RedirectToOriginUrl(string uriLocalPath)
         {
-            var isUrlPathConverted = _urlConvertor.TryConvertUriLocalPathToId(uriLocalPath, out var urlId);
+           var isUrlPathConverted = _urlConvertor.TryConvertUriLocalPathToId(uriLocalPath, out var urlId);
 
             if (!isUrlPathConverted)
                 return NotFound();
